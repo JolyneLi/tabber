@@ -1,6 +1,6 @@
 <template>
-  <div class="tab-bar-item">
-    <div :class="{ active: isactive }">
+  <div class="tab-bar-item" @click="tabbutton">
+    <div :style="activeStyle">
       <slot name="icon"></slot>
       <slot name="text"></slot>
     </div>
@@ -10,10 +10,32 @@
 <script>
 export default {
   name: "TabBarItem",
+  // props: ["path"],
+  props: {
+    path: String,
+    activeColor: {
+      type: String,
+      default: "red",
+    },
+  },
   data() {
     return {
-      isactive: true,
+      // isactive: true,
     };
+  },
+  computed: {
+    isactive() {
+      return this.$route.path == this.path ? true : false;
+    },
+    activeStyle() {
+      return this.isactive ? { color: this.activeColor } : {};
+    },
+  },
+
+  methods: {
+    tabbutton() {
+      this.$router.push(this.path);
+    },
   },
 };
 </script>
@@ -26,8 +48,5 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-.active {
-  color: red;
 }
 </style>
