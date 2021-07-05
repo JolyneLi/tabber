@@ -1,32 +1,42 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+    <tab-bar>
+      <tab-bar-item>
+        <span class="iconfont icon-yemian" slot="icon"></span>
+        <div slot="text">首页</div>
+      </tab-bar-item>
+      <tab-bar-item>
+        <span class="iconfont icon-leimupinleifenleileibie2" slot="icon"></span>
+        <div slot="text">分类</div>
+      </tab-bar-item>
+      <tab-bar-item>
+        <span
+          class="iconfont icon-qicheqianlian-select-copy"
+          slot="icon"
+        ></span>
+        <div slot="text">购物车</div>
+      </tab-bar-item>
+      <tab-bar-item>
+        <span class="iconfont icon-wodedangxuan" slot="icon"></span>
+        <div slot="text">我的</div>
+      </tab-bar-item>
+    </tab-bar>
   </div>
 </template>
 
+<script>
+import TabBar from "./components/tabber/TabBar";
+import TabBarItem from "./components/tabber/TabBarItem";
+
+export default {
+  components: {
+    TabBar,
+    TabBarItem,
+  },
+};
+</script>
+
 <style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+@import "./assets/css/Base.css";
+@import "./assets/font/iconfont.css";
 </style>
